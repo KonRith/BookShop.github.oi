@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+    Register a New User
+{% endblock %}
+
+{% block content %}
+<div class="form_bg">
+    <div class="register-container">
+        <h1>Register a New User</h1>
+        <form action="{% url 'users:register' %}" method="post" class="register-form">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="submit-btn">Sign Up</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

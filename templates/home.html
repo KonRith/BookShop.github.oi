@@ -1,0 +1,84 @@
+{% extends "layout.html" %} 
+{% load static %}
+
+{% block title %}
+ Home 
+{% endblock %} 
+
+{% block content %}
+      <!-- Header-->
+      <header class="bg-success-emphasis py-5" id="mygg">
+        <div class="container px-5">
+          <div class="row gx-5 align-items-center justify-content-center">
+            <div class="col-lg-8 col-xl-7 col-xxl-6">
+              <div class="my-5 text-center text-xl-start">
+                {% comment %} <marquee scrollamount="12" behavior="" direction="Left"> {% endcomment %}
+                  <h1 class="display-5 fw-bolder mb-2 koko text-center bgo">
+                 <span class="autotype"></span> 
+                
+                
+                <p class="lead fw-normal text-dark mb-4">
+                  "Welcome to our online bookshop! Explore a vast collection of books across all genres and find your next great read. Whether you're looking for bestsellers, classics, or hidden gems, we’ve got something for everyone. Browse with ease and discover your new favorite book today!"
+                </p>
+                <div
+                  class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start"
+                >
+                  <a
+                    class="btn btn-warning btn-lg px-4 me-sm-3 text-white get-started"
+                    href="{% url "Computer:computer_list" %}"
+                    >Get Started</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center move">
+              <img
+                class="img-fluid rounded-3 my-5"
+                src="https://i.pinimg.com/736x/fb/13/82/fb1382ce6f0b2aca0f5b2a3169e95005.jpg"
+                alt="..."
+              />
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- Testimonial section-->
+      <div class="py-5 bg-light">
+        <div class="container px-5 my-5">
+          <div class="row gx-5 justify-content-center">
+            <div class="col-lg-10 col-xl-7">
+              <div class="text-center">
+                <div class="fs-4 mb-4 fst-italic">
+                  "<b>Reading </b>is the best friend for every <b>Reader</b>"
+                </div>
+                <div class="d-flex align-items-center justify-content-center">
+                  <img 
+                    style="height: 60px"
+                    class="rounded-circle me-3"
+                    src="https://marketplace.canva.com/EAGLYHm9wmc/1/0/1600w/canva-yellow-blue-white-modern-computer-store-logo-U0QWwcrijWI.jpg"
+                    alt="..."
+                  />
+                  <div class="fw-bold">
+                    Quote. For
+                    <span class="fw-bold text-primary mx-1">/</span>
+                    Online BookShop.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Blog preview section-->
+      <section class="py-5" id="my_about">
+        <div class="container px-5 my-5">
+          <div class="row gx-5 justify-content-center">
+            <div class="col-lg-8 col-xl-6">
+              <div class="text-center">
+                <h2 class="fw-bolder bgo">About Our Shop</h2>
+                <p class="lead fw-normal text-muted mb-5">
+                  Our secure checkout process and multiple payment options ensure a smooth, worry-free shopping experience. We also provide fast shipping and order tracking, making it easy for you to get your hands on your next great read as quickly as possible. Whether you’re looking for printed copies,<b>eBooks</b> , or <b>special editions</b> , our <b>online bookshop</b> is dedicated to offering a broad selection at competitive prices. Join our community of readers today and uncover a world of literary <b>treasures</b>!
+                </p>
+              </div>
+            </div>
+          </div>
+{% endblock %}

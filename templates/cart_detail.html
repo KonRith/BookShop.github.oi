@@ -1,0 +1,113 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-4">
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Your Shopping Cart</title>
+    <style>
+      /* Basic styling for the cart items and buttons */
+      .cart-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+      }
+      .cart-item img {
+        width: 100px;
+        height: auto;
+        margin-right: 20px;
+      }
+      .cart-item-details {
+        flex: 1;
+      }
+      .cart-controls form {
+        display: inline;
+      }
+      .cart-controls button {
+        background-color: #ff9900;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        margin: 0 3px;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+      .checkout-btn {
+        display: inline-block;
+        background-color: green;
+        color: #fff;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 4px;
+        margin-top: 20px;
+      }
+      /* Styling for totals */
+      .totals {
+        text-align: right;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <h1 class="fw-bold text-dark">Your Shopping Cart</h1>
+      <div style="background-color:black;height:2px; width:360px; margin-bottom:10px"></div>
+    </center>
+    {% if cart %}
+      <ul>
+        {% for slug, item in cart.items %}
+          <li class="cart-item">
+            <!-- Display the image if it exists -->
+            {% if item.image %}
+              <img src="{{ item.image }}" alt="{{ item.name }}">
+            {% endif %}
+            <div class="cart-item-details">
+              <h3>{{ item.name }}</h3>
+              <p class="text-danger">Price: ${{ item.price }}</p>
+              <p>Quantity: {{ item.quantity }}</p>
+              <div class="cart-controls">
+                <!-- Increase Quantity -->
+                <form method="POST" action="{% url 'Computer:update_quantity' slug %}" style="display:inline;">
+                  {% csrf_token %}
+                  <input type="hidden" name="action" value="increase">
+                  <button type="submit">+</button>
+                </form>
+                <!-- Decrease Quantity -->
+                <form method="POST" action="{% url 'Computer:update_quantity' slug %}" style="display:inline;">
+                  {% csrf_token %}
+                  <input type="hidden" name="action" value="decrease">
+                  <button type="submit">-</button>
+                </form>
+                <!-- Remove Item -->
+                <form method="POST" action="{% url 'Computer:remove_item' slug %}" style="display:inline;">
+                  {% csrf_token %}
+                  <button type="submit">Remove</button>
+                </form>
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+        <p>Total Quantity:<span class="text-danger fw-bold"> {{ total_quantity }} </span>ក្បាល</p>
+        
+        <p>Total Price: $ <span class="text-danger fw-bold">{{ total_price }}</span></p>
+        
+      </ul>
+  
+      <!-- Display total price and total quantity above the checkout button -->
+      
+  
+      <!-- Checkout Button -->
+      <a href="{% url 'Computer:checkout' %}" class="checkout-btn">Checkout</a>
+  
+    {% else %}
+      <p>Your cart is empty.</p>
+    {% endif %}
+  </body>
+  </html>
+</div>
+{% endblock %}

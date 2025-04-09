@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block content %}
+<div class="container mt-4">
+  <h1 class="text-center">Payment</h1>
+  <div style="text-align:center; margin: 20px 0;">
+    <!-- Bank card image and names (adjust the image paths as needed) -->
+    <img src="{% static 'images/bank_card.png' %}" alt="Bank Card" style="max-width:200px;">
+    <p>Visa, MasterCard, Amex</p>
+  </div>
+  <!-- Payment form: hidden step field tells view we're on step 1 -->
+  <form method="POST" action="{% url 'Computer:payment' %}" style="text-align:center;">
+    {% csrf_token %}
+    <input type="hidden" name="step" value="1">
+    <button type="submit" style="background-color: orange; color:#fff; border:none; padding:10px 20px; border-radius:4px;">
+      Payment
+    </button>
+  </form>
+</div>
+{% endblock %}

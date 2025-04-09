@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+  <center>
+    <h1 class="fw-bold">Your Searching Book</h1>
+    <div style="background-color:black;height:2px; width:380px; margin-bottom:10px"></div>
+  </center>
+
+  <!-- Search Form -->
+  <center>
+    <form class="searcch-formm" method="get" action="{% url 'Computer:search_results' %}">
+      <input type="text" name="q" placeholder="Search by name..." value="{{ query }}" class="searcch-inputt">
+      <button type="submit" class="searcch-buttonn">Search</button>
+    </form>
+  </center>
+  
+  <!-- Display Search Results -->
+  {% if query %}
+    <center><h4 class="ft">Results for "{{ query }}":</h4></center>
+    {% if results %}
+      <div class="results-grid">
+        {% for computer in results %}
+          <div class="result-item">
+            {% if computer.image %}
+              <img src="{{ computer.image }}" alt="{{ computer.name }}">
+            {% else %}
+              <p>No image available.</p>
+            {% endif %}
+            <p>{{ computer.name }}</p>
+            <a href="{% url 'Computer:computer_detail' computer.slug %}" class="text-warning">View Details</a>
+
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>No results found.</p>
+    {% endif %}
+  {% endif %}
+
+{% endblock %}

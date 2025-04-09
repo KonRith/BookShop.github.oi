@@ -1,0 +1,623 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Hanuman:wght@100;300;400;700;900&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Hanuman", serif;
+}
+.text-warning a {
+  color: inherit; /* Inherit the parent's color */
+}
+.bgo {
+  font-family: "Hanuman", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+/* Styling all social icons */
+.text-reset i {
+  font-size: 24px;  /* Adjust icon size */
+  transition: 0.3s ease-in-out;
+}
+
+/* Individual icon colors */
+.text-reset .fa-facebook-f { color: #1877F2; } /* Facebook */
+.text-reset .fa-twitter { color: #1DA1F2; }    /* Twitter */
+.text-reset .fa-google { color: #DB4437; }     /* Google */
+.text-reset .fa-instagram { color: #C13584; }  /* Instagram */
+.text-reset .fa-linkedin { color: #0077B5; }   /* LinkedIn */
+.text-reset .fa-github { color: #333; }        /* GitHub */
+.text-resett{
+  color: black;
+}
+.text-resett:hover{
+  color: rgb(255, 136, 0);
+}
+
+/* Hover effects */
+.text-reset i:hover {
+  transform: scale(1.2);
+  opacity: 0.8;
+}
+
+nav {
+  background-color: whitesmoke;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 30px;
+  padding-top: 15px;
+  padding-bottom: -5px;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+nav ul li a {
+  display: block;
+  text-decoration: none;
+  color:rgb(255, 136, 0);
+  opacity: 80%;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 5px;
+  transition: transform 0.2s, opacity 0.2s; /* Added transition */
+  font-family: "Hanuman", serif;
+}
+
+nav ul li a:hover {
+  opacity: 100%;
+  transform: scale(1.1); /* Smooth zoom effect */
+}
+
+nav ul li a.active {
+  text-decoration: underline;
+  /* or border-bottom: 2px solid #000; */
+}
+
+.bgo{
+  color: rgb(255, 136, 0);
+}
+
+.st {
+  position: sticky;
+  top: 90px;
+  z-index: 2;
+}
+.stt {
+  width: 100%;
+}
+
+/* Style the unordered list as a flex container */
+.stt ul {
+  display: flex;
+  align-items: center;        /* vertically center items */
+  justify-content: flex-start;/* left-align the items */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Style for each list item */
+.stt li {
+  padding: 0 10px;
+  position: relative;
+}
+
+/* Font size for links */
+.stt li a {
+  font-size: 0.9rem;
+}
+
+/* Optional divider (commented out) */
+.stt li:not(:last-child)::after {
+  /* border-right: 1px solid #ccc; */
+  content: "";
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 20px;
+}
+
+/* Remove divider for spacer, search, and cart if you don't want it */
+.stt li.nav-search::after,
+.stt li.nav-cart::after,
+.stt li.nav-spacer::after {
+  display: none;
+}
+
+/* The spacer item grows to push subsequent items (search and cart) to the right */
+.stt li.nav-spacer {
+  margin-left: auto;
+}
+
+/* Ensure the search input and button stay side by side */
+.stt li.nav-search form {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+/* Style for the search input */
+.stt li.nav-search form input[type="text"] {
+  padding: 5px 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* Optionally give the button some margin or styling */
+.stt li.nav-search form input[type="submit"] {
+  margin-left: 5px; /* keeps a small gap from the text field */
+  /* Additional button styling if you want */
+}
+
+/* ---------------------------------------------------- */
+/* CART ICON/BADGE UPDATE: Remove old conflicting rules */
+/* If you had .stt li.nav-cart a { display: flex; ... }  */
+/* you can remove it or override it below.              */
+/* ---------------------------------------------------- */
+
+/* (Optional) You can remove or adjust this if it conflicts
+.stt li.nav-cart a {
+display: flex;
+align-items: center;
+text-decoration: none;
+color: inherit;
+font-size: 25px;
+color: rgb(255, 136, 0);
+}
+*/
+
+/* Give cart item a margin if you want */
+.stt li.nav-cart {
+  margin-right: -20px; /* optional, adjust as you like */
+}
+
+/* Adjust spacing for the search */
+.stt li.nav-search {
+  margin-left: 115px;
+}
+
+/* Search button style */
+.searchh {
+  font-size: 0.8rem; /* Decrease the font size */
+  padding: 11px;
+  margin-left: 5px;
+  background-color: rgb(255, 136, 0);
+  line-height: 1;    /* Keep text centered vertically */
+  cursor: pointer;
+}
+/* If you want to keep .lg, it’s fine. But usually Font Awesome uses .fa-lg */
+.lg {
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+/* ---------------------------------------------------- */
+/* CART ICON/BADGE UPDATE: This is the critical part    */
+/* ---------------------------------------------------- */
+.cart-container {
+  position: relative;
+  display: inline-block; 
+  text-decoration: none;
+  color: rgb(255, 136, 0);
+  font-size: 2rem;
+}
+.sz{
+  font-size: 30px;
+  margin-top: 15px;
+}
+.szz{
+  font-size: 30px;
+  margin-top: 5px;
+}
+/* Position the badge absolutely on top of the icon */
+.cart-badge {
+  position: absolute;
+  top: -8px;       /* Adjust to move badge up/down */
+  right: -8px;     /* Adjust to move badge left/right */
+  /* background-color: orange; The orange color you want */
+  color: orange !important;
+  border-radius: 50%;
+  padding: 4px 6px;
+  font-size: 0.75rem;
+  line-height: 1;
+  min-width: 1.25rem; /* Ensures a circular shape for single digits */
+  text-align: center;
+
+  /* Add these lines to center the text inside the circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Force override Bootstrap's .badge-info if necessary */
+.badge-info.cart-badge {
+  background-color: rgb(255, 255, 255) !important;
+  color: rgb(0, 0, 0) !important;
+}
+
+/* ---------------------------------------------------- */
+
+
+/* Card / Grid Styles (unchanged) */
+.col-lg-2 {
+  flex: 0 0 30%; /* Makes 5 cards per row on large screens */
+  max-width: 25%;
+}
+.custom-card {
+  transition: transform 0.2s ease-in-out;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 100%;
+  background-color: #fff;
+  border: 1px solid #a3c293;
+  padding: 5px 5px 0 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.custom-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+.image-container {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  padding: 5px;
+}
+.image-container img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.card-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 8px;
+  text-align: center;
+  color: #333;
+}
+.card-text {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+.custom-btn {
+  width: 180px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+.cart-btn {
+  background-color: #ffc107;
+  color: #000;
+}
+.cart-btn:hover {
+  background-color: #e0a800;
+  transform: scale(1.05);
+}
+.buy-btn {
+  background-color: #28a745;
+  color: #fff;
+}
+.buy-btn:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+.custom-btn i {
+  margin-right: 8px;
+}
+
+/* Registration Form Styles */
+.register-container {
+  width: 40%;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(252, 240, 4, 0.1);
+}
+.register-container h1 {
+  text-align: center;
+  color: #ffae00;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+input:focus {
+  border-color: rgb(255, 136, 0);
+  outline: none;
+}
+.submit-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(255, 136, 0);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+div.form_bg {
+  background-color: #0077B5;
+  margin: -25px;
+  background-image: url(https://i.pinimg.com/736x/67/18/22/671822c2f63dd5f65d8fd15c9710420b.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+@media (max-width: 768px) {
+  .register-container {
+      width: 90%;
+  }
+}
+
+/* Login Form Styles */
+.form_bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+.login-container {
+  width: 350px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+.login-container h1 {
+  text-align: center;
+  color: #ffae00;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+@media (max-width: 768px) {
+  .login-container {
+      width: 90%;
+  }
+}
+
+/* Custom class for 5 cards per row */
+@media (min-width: 1200px) {
+  .col-xl-2-4 {
+      flex: 0 0 20%;
+      max-width: 20%;
+  }
+}
+
+/* Navbar form button */
+.navbar form {
+  display: inline-block;
+}
+form button {
+  background-color: #ff4d4d; /* Red button */
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+form button:hover {
+  background-color: #cc0000;
+}
+h1, h2, p {
+  font-family: "Hanuman", serif;
+}
+.get-started {
+  font-family: "Hanuman", serif;
+}
+.small-card {
+  width: 300px;
+  position: relative;
+}
+.ellipse {
+  width: 120px;
+  height: 60px;
+  background-color: #ffffff;
+  border: 2px solid #333;
+  border-radius: 50%;
+  position: absolute;
+  top: 700px;
+  left: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ellipse i {
+  font-size: 2.5rem;
+}
+.get-started{
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  background-color: rgb(255, 136, 0);
+}
+.get-started:hover{
+  transform: scale(1.1); /* Slightly enlarge */
+  background-color: #000000;
+  color: white; /* Change color for better effect */
+}
+.get-started:active {
+  transform: scale(0.95); /* Slightly shrink when clicked */
+}
+@keyframes circular-shake {
+  0% { transform: translate(0, 0); }  
+  25% { transform: translate(10px, -10px); } /* Move up-right */
+  50% { transform: translate(15px, 10px); } /* Move down-right */
+  75% { transform: translate(10px, 15px); } /* Move down-left */
+  100% { transform: translate(0, 0); } /* Back to start */
+}
+
+.move img{
+  animation: circular-shake 5s infinite linear;
+}
+h6 {
+  color: rgb(255, 136, 0);
+}
+/* Container for the search form */
+.searcch-formm {
+  display: flex;             /* Put input & button on the same line */
+  align-items: center;       /* Vertically center them */
+  gap: 0.5rem;               /* Space between input & button */
+  margin-bottom: 1rem;  
+  width: 500px;
+  /* Space below the form (optional) */
+}
+
+/* Style the text input */
+.searcch-inputt {
+  padding: 0.5rem 1rem;      /* Increase padding for a bigger click area */
+  border: 1px solid #ccc;    /* Light border */
+  border-radius: 4px;        /* Slightly rounded corners */
+  font-size: 1rem;           /* Adjust font size */
+  flex: 1;            
+         /* Let input grow to fill available space (optional) */
+}
+
+/* Style the submit button */
+.searcch-buttonn {
+  background-color: #ff9900; /* Orange background */
+  color: #fff;               /* White text */
+  padding: 0.5rem 1rem;      /* Same vertical/horizontal padding as input */
+  border: none;              /* Remove default button border */
+  border-radius: 4px;        /* Match input corners */
+  cursor: pointer;           /* Pointer cursor on hover */
+  font-size: 1rem;           /* Match input text size */
+  transition: background-color 0.2s ease;
+}
+
+/* Hover effect on the button */
+.searcch-buttonn:hover {
+  background-color: #cc7a00; /* Slightly darker orange on hover */
+}
+/* Grid container for search results */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns per row */
+  gap: 10px;                           /* spacing between items */
+  margin-top: 20px;
+  padding: 0 5px;                     /* optional padding */
+}
+
+/* Each grid item */
+.result-item {
+  text-align: center;
+  padding: 5px;
+  /* border: 1px solid #ccc;   */
+              /* optional border */
+  border-radius: 4px;
+}
+
+/* Ensure the images are sized nicely */
+.result-item img {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px auto;
+}
+.ft{
+  font-family: "Hanuman", serif;
+}
+
+.checkout-btn{
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  background-color: rgb(255, 136, 0);
+}
+.checkout-btn:hover{
+  transform: scale(1.1); /* Slightly enlarge */
+  background-color: rgb(255, 136, 0);
+  color: white; /* Change color for better effect */
+}
+.checkout-btn:active {
+  transform: scale(0.95); /* Slightly shrink when clicked */
+}
+.btnn{
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  background-color: rgb(47, 205, 11);
+}
+.btnn:hover{
+  transform: scale(1.1); /* Slightly enlarge */
+  background-color: rgb(255, 136, 0);
+  color: white; /* Change color for better effect */
+}
+.btnn:active {
+  transform: scale(0.95); /* Slightly shrink when clicked */
+}
+.em{
+  width: 370px;
+}
+.pn{
+  width: 370px;
+  margin-right: 65px;
+}
+.cb{
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+.ccb{
+  height: 20px;
+  width: 20px;
+}
+.bts{
+  margin-top: 20px;
+}

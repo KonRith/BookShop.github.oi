@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-4">
+  <h1 class="fw-bold text-dark text-center">Delivery Address</h1>
+  <div style="background-color:black; height:2px; width:360px; margin: 10px auto;"></div>
+
+  <!-- MAP AND LOCATION SECTION -->
+  <div style="text-align:center; margin-bottom: 20px;">
+    <p>Pick your location.</p>
+    <!-- Example: Using an iframe as a placeholder for Google Maps -->
+    <div style="width: 100%; max-width: 600px; margin: 0 auto;">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.840287545455!2d144.95373561531855!3d-37.81627917975162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f00f04df%3A0xf341615b0c7c72af!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2skh!4v1688717226545!5m2!1sen!2skh"
+        width="100%"
+        height="300"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy">
+      </iframe>
+    </div>
+    <p style="font-size: 0.9em;">When you pick a location, it will load into the box below.</p>
+    <!-- Visible input for address -->
+    <input 
+      type="text" 
+      id="location-input" 
+      name="delivery_address_display" 
+      placeholder="e.g. Sen Sok, Phnom Penh" 
+      style="width: 80%; max-width: 400px; padding: 5px; margin-top: 10px;" 
+    />
+  </div>
+
+  <hr />
+
+  <!-- PRICE AND DISCOUNT SECTION -->
+  <div style="max-width: 600px; margin: 0 auto;">
+    <div style="font-size: 1.1em; margin-bottom: 10px;">
+      <p><strong>Total price books:</strong> $<span class="text-danger">{{ total_price }}</span> </p>
+      <p><strong>Delivery price:</strong> $<span class="text-danger">{{ shipping }}</span> </p>
+      <p>
+        <strong>Discount:</strong> 
+        $<span class="text-danger">{{ discount }} </span>
+        <small style="color: gray;">
+          {% if total_price >= 200 %}($10 if total >= 200){% elif total_price >= 100 %}($5 if total >= 100){% else %}(No discount){% endif %}
+        </small>
+      </p>
+      <p>
+        <strong>Total amount:</strong> $<span class="text-danger">{{ final_amount }}</span>
+      </p>
+    </div>
+
+    <!-- PAYMENT FORM -->
+    <form method="POST" action="{% url 'Computer:payment' %}">
+      {% csrf_token %}
+      <input type="hidden" name="total_price" value="{{ total_price }}">
+      <input type="hidden" name="delivery_fee" value="{{ shipping }}">
+      <input type="hidden" name="discount" value="{{ discount }}">
+      <input type="hidden" name="final_amount" value="{{ final_amount }}">
+      <!-- Hidden field to store the chosen delivery address -->
+      <input type="hidden" id="delivery_address" name="delivery_address" value="">
+      <button class="btnn" type="submit" style="background-color: orange; color: #fff; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">
+        Payment
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Update the hidden delivery_address field on every keystroke
+  document.getElementById('location-input').addEventListener('input', function() {
+    document.getElementById('delivery_address').value = this.value;
+  });
+</script>
+
+{% endblock %}

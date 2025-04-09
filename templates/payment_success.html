@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-4" style="text-align:center;">
+    <h1>Thank You!</h1>
+    <p>Your payment has been successfully processed.</p>
+
+    <h3>Payment Details:</h3>
+    <p><strong>Total Price:</strong> $<span class="text-danger">{{ total_price }}</span></p>
+    <p><strong>Payment Method:</strong> {{ payment_method }}</p>
+    <p><strong>Email:</strong> {{ email }}</p>
+    <p><strong>Phone Number:</strong> {{ phone_number }}</p>
+
+    <br>
+    <a href="{% url 'Computer:computer_list' %}" style="padding:10px 20px; background-color: green; color:white; text-decoration:none;">
+        Continue Shopping
+    </a>
+</div>
+{% endblock %}

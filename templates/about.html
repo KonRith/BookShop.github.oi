@@ -1,0 +1,139 @@
+{% extends "layout.html" %} 
+{% load static %}
+
+{% block title %}
+ About 
+{% endblock %} 
+
+{% block content %}
+ <!-- Blog preview section-->
+ <section class="py-5" id="my_about">
+    <div class="container px-5 my-5">
+      <div class="row gx-5 justify-content-center">
+        <div class="col-lg-8 col-xl-6">
+          <div class="text-center">
+            <h2 class="fw-bolder text-primary">About Us</h2>
+            <p class="lead fw-normal text-muted mb-5">
+              We are students at <b>ACLEDA University Of Business</b> that
+              are pursuing degree in
+              <b>Computer Science and Engineering</b>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ellipse">
+        <i class="fa-solid fa-handshake"></i>
+      </div>
+
+      <div class="row gx-5">
+        <div class="col-lg-6 mb-5">
+          <div class="card h-100 shadow border-0 small-card mx-auto">
+            <img class="card-img-top" src="https://konrith.github.io/Digital-Library.github.oi/pic/rithy.jpg" alt="..." />
+            <div class="card-body p-4">
+              <a
+                class="text-decoration-none link-dark stretched-link"
+                href="https://t.me/KonRith"
+                target="_blank"
+                ><h5 class="card-title mb-3">Information</h5></a
+              >
+              <p class="card-text mb-0">
+                My name is Khoeun Rithy, I am currently pursuing a degree in
+                Computer Science and Engineering at AUB. I have a strong
+                passion for web development.
+              </p>
+            </div>
+            <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+              <div class="d-flex align-items-end justify-content-between">
+                <div class="d-flex align-items-center">
+                  <img
+                    class="rounded-circle me-3"
+                    src="https://konrith.github.io/Digital-Library.github.oi/pic/konrith.jpg"
+                    alt="..."
+                  />
+                  <div class="small">
+                    <div class="fw-bold">KHOEUN RITHY</div>
+                    <div class="text-muted">April 01, 2025</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 mb-5">
+          <div class="card h-100 shadow border-0 small-card mx-auto">
+            <img class="card-img-top" src="https://konrith.github.io/Digital-Library.github.oi/pic/thorng.jpg" alt="..." />
+            <div class="card-body p-4">
+              <a
+                class="text-decoration-none link-dark stretched-link"
+                href="https://t.me/+855713324124"
+                target="_blank"
+                ><h5 class="card-title mb-3">Information</h5></a
+              >
+              <p class="card-text mb-0">
+                My name is Houn Bunthorng, I am currently pursuing a degree
+                in Computer Science and Engineering at AUB. I love designing
+                web pages.
+              </p>
+            </div>
+            <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+              <div class="d-flex align-items-end justify-content-between">
+                <div class="d-flex align-items-center">
+                  <img
+                    class="rounded-circle me-3"
+                    src="https://konrith.github.io/Digital-Library.github.oi/pic/thorng%202.jpg"
+                    alt="..."
+                  />
+                  <div class="small">
+                    <div class="fw-bold">HOUN BUNTHORNG</div>
+                    <div class="text-muted">April 01, 2025</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% comment %} !Map {% endcomment %}
+  <h1 class="text-center">Here is the our location of our Shop.📌</h1>
+
+  <center>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5317.874990602602!2d104.85788072212932!3d11.62819165849269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3109527b5a6c6599%3A0x947e61c3ff00c21d!2sACLEDA%20Institute%20of%20Business!5e0!3m2!1skm!2skh!4v1742701706864!5m2!1skm!2skh" width="90%" height="450" style="border:0; justify-self: center;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="width:90%; margin: auto"></iframe>
+  </center>
+
+  {% comment %} ! support {% endcomment %}
+
+   <!-- Page support-->
+   <section class="py-5" id="my_support">
+    <div class="container px-5">
+      <h1 class="fw-bolder fs-5 mb-4">Company Location</h1>
+      <div class="card border-0 shadow rounded-3 overflow-hidden">
+        <div class="card-body p-0">
+          <div class="row gx-0">
+            <div class="col-lg-6 col-xl-5 py-lg-5">
+              <div class="p-4 p-md-5">
+                <div class="badge bg-primary bg-gradient rounded-pill mb-2">
+                  Thanks
+                </div>
+                <div class="h2 fw-bolder">Support Us Here!!!</div>
+                <p>
+                  Please consider supporting our mission to provide free
+                  eBooks to readers around the world. Your contribution will
+                  help us expand our library and improve the platform,
+                  making knowledge accessible to everyone. Together, we can
+                  promote the love of reading for all. 😊🙏
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-6 col-xl-7 p-4">
+              <img style="height:400px" src="https://konrith.github.io/Digital-Library.github.oi/pic/qr.jpg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

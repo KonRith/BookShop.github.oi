@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+    User Login
+{% endblock %}
+
+{% block content %}
+<div class="form_bg">
+    <div class="login-container">
+        <h1>User Login</h1>
+        <form action="{% url 'users:login' %}" method="post" class="login-form">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+                {% if request.GET.next %}
+                    <input type="hidden" name="next" value="{{ request.GET.next }}" />
+                {% endif %}
+            </div>
+            <button type="submit" class="submit-btn btn-warning">Login</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

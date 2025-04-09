@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-4" style="text-align:center;">
+    <h1>Payment</h1>
+    <center>
+      <div style="background-color:black; height:4px; margin-bottom:15px; width:170px"></div>
+    </center>
+    <p>Select a payment method:</p>
+
+    <form method="POST" action="{% url 'Computer:payment' %}">
+        {% csrf_token %}
+
+        <!-- Hidden Total Price -->
+        <input type="hidden" name="total_price" value="{{ total_price }}">
+
+        <!-- Bank Card Selection -->
+        <div style="display: flex; justify-content: center; gap: 20px;">
+            <label>
+                <input type="radio" name="payment_method" value="Visa" required>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" width="80" alt="Visa Logo">
+            </label>
+
+            <label>
+                <input type="radio" name="payment_method" value="MasterCard">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" width="80" alt="MasterCard Logo">
+            </label>
+
+            <label>
+                <input type="radio" name="payment_method" value="PayPal">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" width="80" alt="PayPal Logo">
+            </label>
+        </div>
+
+        <br>
+
+        <!-- Email & Phone Number Input -->
+        <div>
+            <label>Email:</label>
+            <input class="em" type="email" name="email" required><br><br>
+
+            <label>Phone Number:</label>
+            <input class="pn" type="tel" name="phone_number" required><br><br>
+        </div>
+        
+        <!-- Payment Confirmation Checkbox -->
+        <div>
+            <label for="confirm_checkbox">
+                <input class="cb" type="checkbox" id="confirm_checkbox" name="confirm_checkbox" required>
+                Tick Here For Check Out!
+            </label>
+        </div>
+        <br>
+
+        <!-- Payment Button -->
+        <button class="btnn" type="submit" style="background-color: orange; color: white; padding: 10px 20px; border: none;">
+            Confirm Payment
+        </button>
+    </form>
+</div>
+{% endblock %}
