@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+    {{ computer.name }} 
+{% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary st" id="Nav">
+    <div class="container-fluid"> 
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse stt" id="navbarSupportedContent">
+            <ul>
+                <!-- Make sure these names match your updated urls.py -->
+                <li><a href="{% url 'Computer:computer_list' %}">All</a></li>|
+        <li><a href="{% url 'Computer:computer_list_Acer' %}">CODING</a></li>|
+        <li><a href="{% url 'Computer:computer_list_Asus' %}">NOVEL</a></li>|
+        <li><a href="{% url 'Computer:computer_list_Msi' %}">BUSINESS</a></li>|
+        <li><a href="{% url 'Computer:computer_list_Lenovo' %}">COMIC</a></li>|
+        <li><a href="{% url 'Computer:computer_list_Mac' %}">ANIME</a></li>|
+        <li><a href="{% url 'Computer:computer_list_Mac_A' %}">MATH</a></li>|
+        <li><a href="{% url 'Computer:computer_list_Mac_B' %}">HISTORY</a></li>|
+        <li><a href="{% url 'Computer:computer_list_Mac_C' %}">OTHER</a></li>
+
+        <li class="nav-spacer"></li>
+
+          <li class="nav-search">
+            <form method="get" action="{% url 'Computer:search_results' %}">
+              <input type="text" name="q" placeholder="Search by name...">
+              <button class="searchh" type="submit">Search</button>
+            </form>
+            
+          </li>
+        <li class="nav-cart">
+            <a href="{% url 'Computer:cart_detail' %}" class="cart-container">
+              <!-- Use Font Awesome’s `fa-lg` instead of `lg` -->
+              <i class="fa-solid fa-cart-arrow-down fa-lg"></i>
+              <!-- Add custom badge class to override Bootstrap's default -->
+              <span class="badge badge-info cart-badge text-danger">{{ cart_count }}</span>
+            </a>
+        </li>
+          
+        <li>
+          <a href="">
+            <i class="fa-solid fa-bookmark lg"></i>
+          </a>
+        </li>
+              </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ computer.image }}" class="img-fluid" alt="{{ computer.name }}">
+        </div>
+        <div class="col-md-6">
+            <h2 class="fw-bold">{{ computer.name }}</h2>
+            <p style="color: red"><strong style"color: red">Price: ${{ computer.price }} </strong></p>
+            <p><strong>Description:</strong> {{ computer.description }}</p>
+            {% comment %} <p><strong>Warranty:</strong> {{ computer.warranty }} years</p> {% endcomment %}
+            
+            <div class="mt-3">
+              <form method="post" action="{% url 'Computer:add_to_cart' computer.slug %}" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-warning">Add to Cart</button>
+              </form>
+              <button class="btn btn-success">Buy Now</button>
+            </div>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

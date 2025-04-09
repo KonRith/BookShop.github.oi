@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+<style>
+  .purchased-items {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 20px;
+      align-items: start;
+  }
+  .purchased-item {
+      text-align: center;
+      border: 1px solid black;
+      padding: 10px;
+  }
+  .purchased-item img {
+      max-width: 90%;
+      display: block;
+      margin: 0 auto;
+  }
+</style>
+
+<section>
+    {% if payment_details %}
+        <center>
+            <h1>Purchase Summary</h1>
+            <div style="background-color:black;height:4px;margin-bottom:15px;width:375px"></div>
+        </center>
+        <h4>
+            <p>Hello <span class="text-warning">{{ user.username }}</span>, here are the details of your books:</p>
+        </h4>
+        <p>
+            <strong>Total Price:</strong> $<span class="text-danger">{{ payment_details.total_price }}</span>
+        </p>
+        <p>
+            <strong>Total Quantity:</strong>
+            <span class="text-danger">{{ payment_details.total_quantity }}</span>​ ក្បាល
+        </p>
+        
+        <p>
+            <strong>Payment Method:</strong> <span class="text-warning">{{ payment_details.payment_method }}</span>
+        </p>
+        <p>
+            <strong>Email:</strong> <span class="text-warning">{{ payment_details.email }}</span>
+        </p>
+        <p>
+            <strong>Phone Number:</strong> <span class="text-warning">{{ payment_details.phone_number }}</span>
+        </p>
+
+        <!-- Display a disabled checkbox to show whether the user confirmed payment -->
+        <p>
+            <strong>Payment Confirmation:</strong>
+            <input class="ccb" type="checkbox" disabled
+                {% if payment_details.confirm_checkbox %}
+                    checked
+                {% endif %}
+            >
+            <span class="text-warning fw-bold">
+                {% if payment_details.confirm_checkbox %}
+                    [Checked Out!]
+                {% else %}
+                    (Not Check Out!)
+                {% endif %}
+            </span>
+        </p>
+
+        {% if payment_details.items %}
+            <center>
+                <h2>Purchased Items</h2>
+                <div style="background-color:black; height:4px; margin-bottom:15px; width:250px;"></div>
+            </center>
+            <div class="purchased-items">
+                {% for slug, item in payment_details.items.items %}
+                    <div class="purchased-item">
+                        <strong>{{ item.name }}</strong>
+                        {% if item.image %}
+                            <img src="{{ item.image }}" alt="{{ item.name }}">
+                        {% else %}
+                            <p>No image available</p>
+                        {% endif %}
+                        <p class="text-danger fw-bold">Quantity: {{ item.quantity }}</p>
+                    </div>
+                    {% if forloop.counter|divisibleby:"7" %}
+                        <div style="grid-column: 1 / -1; padding-top:10px;">
+                            <hr style="border: 1px solid #ccc;">
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% else %}
+        <p>You haven't made any purchases yet.</p>
+    {% endif %}
+    <div class="bts"><a href="{% url 'Computer:computer_list' %}" style="padding:10px 20px; background-color: green; color:white; text-decoration:none;">
+        Continue Shopping
+    </a></div> 
+</section>
+{% endblock %}
